@@ -1,4 +1,4 @@
-name: .NET Core Desktop
+name: .NET Core Build and Test
 
 on:
   push:
@@ -17,10 +17,7 @@ jobs:
     runs-on: windows-latest
 
     env:
-      Solution_Name: MyCondo.Administracao.sln                  # Nome da sua solução.
-      Test_Project_Path: tests/MyCondo.Administracao.Tests/MyCondo.Administracao.Tests.csproj # Caminho real do seu projeto de teste.
-      Wap_Project_Directory: src/MyCondo.Administracao.Package   # Caminho real do diretório Wap.
-      Wap_Project_Path: src/MyCondo.Administracao.Package/MyCondo.Administracao.Package.wapproj # Caminho real do arquivo de projeto Wap.
+      Solution_Name: MyCondo.Administracao.sln # Caminho do arquivo da solução.
 
     steps:
     - name: Checkout
@@ -38,28 +35,21 @@ jobs:
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v2
 
-    # Executar todos os testes unitários
-    - name: Execute unit tests
-      run: dotnet test
+    # Restaurar dependências
+    - name: Restore dependencies
+      run: dotnet restore $env:Solution_Name
 
-    # Restaurar a aplicação
-    - name: Restore the application
-      run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
-      env:
-        Configuration: ${{ matrix.configuration }}
+    # Build da aplicação
+    - name: Build the application
+      run: dotnet build $env:Solution_Name --configuration ${{ matrix.configuration }}
 
-    # Criar o pacote do aplicativo
-    - name: Create the app package
-      run: msbuild $env:Wap_Project_Path /p:Configuration=$env:Configuration /p:UapAppxPackageBuildMode=$env:Appx_Package_Build_Mode /p:AppxBundle=$env:Appx_Bundle
-      env:
-        Appx_Bundle: Always
-        Appx_Bundle_Platforms: x86|x64
-        Appx_Package_Build_Mode: StoreUpload
-        Configuration: ${{ matrix.configuration }}
+    # Executar testes
+    - name: Run tests
+      run: dotnet test $env:Solution_Name --configuration ${{ matrix.configuration }}
 
-    # Fazer upload dos artefatos de build
-    - name: Upload build artifacts
+    # Publicar artefatos de build (se necessário)
+    - name: Publish build artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: MSIX Package
-        path: ${{ env.Wap_Project_Directory }}\AppPackages
+        name: BuildOutput
+        path: bin/${{ matrix.configuration }}
