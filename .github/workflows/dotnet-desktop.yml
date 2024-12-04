@@ -65,8 +65,8 @@ jobs:
           "Content-Type" = "application/json"
         }
         $body = @{
-          "serviceId": "srv-ct8cqt9opnds739u4nh0",
-          "trigger": "deploy"
+          "serviceId" = "srv-ct8cqt9opnds739u4nh0"
+          "trigger" = "deploy"
         } | ConvertTo-Json
         Invoke-RestMethod -Uri $url -Method Post -Headers $headers -Body $body
 
