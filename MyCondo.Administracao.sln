@@ -13,17 +13,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - CrossCutting", "5 - CrossCutting", "{45822DD2-8C48-4D41-9684-A85D1DA69093}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCondo.Administracao.IoC", "src\MyCondo.Administracao.IoC\MyCondo.Administracao.IoC.csproj", "{4D71A147-A546-49C1-9A45-097101EC5CFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCondo.Administracao.IoC", "src\MyCondo.Administracao.IoC\MyCondo.Administracao.IoC.csproj", "{4D71A147-A546-49C1-9A45-097101EC5CFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCondo.Administracao.Infra", "src\MyCondo.Administracao.Infra\MyCondo.Administracao.Infra.csproj", "{3689635D-524B-41AA-BD1B-F36407B77A74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCondo.Administracao.Infra", "src\MyCondo.Administracao.Infra\MyCondo.Administracao.Infra.csproj", "{3689635D-524B-41AA-BD1B-F36407B77A74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCondo.Administracao.Transfer", "src\MyCondo.Administracao.Transfer\MyCondo.Administracao.Transfer.csproj", "{E7219715-C98C-4437-A7AE-5221ABE59FA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCondo.Administracao.Transfer", "src\MyCondo.Administracao.Transfer\MyCondo.Administracao.Transfer.csproj", "{E7219715-C98C-4437-A7AE-5221ABE59FA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCondo.Administracao.Domain", "src\MyCondo.Administracao.Domain\MyCondo.Administracao.Domain.csproj", "{350D4DAD-0AFE-4C72-A7FD-E3563A57B222}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCondo.Administracao.Domain", "src\MyCondo.Administracao.Domain\MyCondo.Administracao.Domain.csproj", "{350D4DAD-0AFE-4C72-A7FD-E3563A57B222}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCondo.Administracao.Application", "src\MyCondo.Administracao.Application\MyCondo.Administracao.Application.csproj", "{5C594EBB-7853-4C42-9076-BC78517152CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCondo.Administracao.Application", "src\MyCondo.Administracao.Application\MyCondo.Administracao.Application.csproj", "{5C594EBB-7853-4C42-9076-BC78517152CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCondo.Administracao", "src\MyCondo.Administracao\MyCondo.Administracao.csproj", "{6B9FD272-0492-4A2E-9E3C-84EE7ED11EB1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCondo.Administracao.API", "src\MyCondo.Administracao.API\MyCondo.Administracao.API.csproj", "{8E8F3539-5BF0-47A3-AF96-E5BCD3A06D4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,10 +51,10 @@ Global
 		{5C594EBB-7853-4C42-9076-BC78517152CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C594EBB-7853-4C42-9076-BC78517152CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C594EBB-7853-4C42-9076-BC78517152CA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6B9FD272-0492-4A2E-9E3C-84EE7ED11EB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6B9FD272-0492-4A2E-9E3C-84EE7ED11EB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6B9FD272-0492-4A2E-9E3C-84EE7ED11EB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6B9FD272-0492-4A2E-9E3C-84EE7ED11EB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E8F3539-5BF0-47A3-AF96-E5BCD3A06D4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E8F3539-5BF0-47A3-AF96-E5BCD3A06D4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E8F3539-5BF0-47A3-AF96-E5BCD3A06D4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E8F3539-5BF0-47A3-AF96-E5BCD3A06D4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,7 +65,7 @@ Global
 		{E7219715-C98C-4437-A7AE-5221ABE59FA0} = {E0F27AD6-1E0A-4C13-9018-9F28392AAFD9}
 		{350D4DAD-0AFE-4C72-A7FD-E3563A57B222} = {E0F27AD6-1E0A-4C13-9018-9F28392AAFD9}
 		{5C594EBB-7853-4C42-9076-BC78517152CA} = {8CA57D69-6827-42D3-84AE-D7A7516CACFF}
-		{6B9FD272-0492-4A2E-9E3C-84EE7ED11EB1} = {DD367604-7C25-4B11-A046-1FC37B70665F}
+		{8E8F3539-5BF0-47A3-AF96-E5BCD3A06D4C} = {DD367604-7C25-4B11-A046-1FC37B70665F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {60FED20C-3DD7-433B-A3BD-9FA90841729C}

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace MyCondo.Administracao.Controllers
+namespace MyCondo.Administracao.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]

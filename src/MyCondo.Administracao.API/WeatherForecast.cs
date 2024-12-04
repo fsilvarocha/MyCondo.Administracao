@@ -1,4 +1,4 @@
-namespace MyCondo.Administracao
+namespace MyCondo.Administracao.API
 {
     public class WeatherForecast
     {
