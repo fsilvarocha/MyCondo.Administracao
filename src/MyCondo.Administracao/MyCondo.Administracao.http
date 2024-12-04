@@ -1,0 +1,6 @@
+@MyCondo.Administracao_HostAddress = http://localhost:5105
+
+GET {{MyCondo.Administracao_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
