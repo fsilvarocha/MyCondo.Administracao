@@ -67,6 +67,13 @@ jobs:
         $body = @{
           "serviceId" = "srv-ct8cqt9opnds739u4nh0"
           "trigger" = "deploy"
+          "branch" = "master"
         } | ConvertTo-Json
-        Invoke-RestMethod -Uri $url -Method Post -Headers $headers -Body $body
+        try {
+          $response = Invoke-RestMethod -Uri $url -Method Post -Headers $headers -Body $body
+          Write-Output "Deployment response: $($response)"
+        } catch {
+          Write-Output "Error: $($_.Exception.Message)"
+          Write-Output "Response: $($_.Response)"
+        }
 
