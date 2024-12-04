@@ -1,0 +1,55 @@
+name: .NET Core Build and Test
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
+
+    runs-on: windows-latest
+
+    env:
+      Solution_Name: MyCondo.Administracao.sln # Caminho do arquivo da solução.
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    # Instalar o .NET Core
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    # Adicionar MSBuild ao PATH
+    - name: Setup MSBuild.exe
+      uses: microsoft/setup-msbuild@v2
+
+    # Restaurar dependências
+    - name: Restore dependencies
+      run: dotnet restore $env:Solution_Name
+
+    # Build da aplicação
+    - name: Build the application
+      run: dotnet build $env:Solution_Name --configuration ${{ matrix.configuration }}
+
+    # Executar testes
+    - name: Run tests
+      run: dotnet test $env:Solution_Name --configuration ${{ matrix.configuration }}
+
+    # Publicar artefatos de build (se necessário)
+    - name: Publish build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: BuildOutput
+        path: bin/${{ matrix.configuration }}
