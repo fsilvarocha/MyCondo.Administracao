@@ -59,12 +59,14 @@ jobs:
       env: 
         RENDER_API_KEY: ${{ secrets.RENDER_API.KEY }}
       run: |
-        curl -X POST \
-        -H "Authorization: Bearer $RENDER_API_KEY" \
-        -H "Content-Type: application/json" \
-        -d '{
+        $url = "https://api.render.com/v1/services/srv-ct8cqt9opnds739u4nh0/deploys"
+        $headers = @{
+          "Authorization" = "Bearer $env:RENDER_API_KEY"
+          "Content-Type" = "application/json"
+        }
+        $body = @{
           "serviceId": "srv-ct8cqt9opnds739u4nh0",
           "trigger": "deploy"
-        }' \
-        https://api.render.com/v1/services/srv-ct8cqt9opnds739u4nh0/deploys
+        } | ConvertTo-Json
+        Invoke-RestMethod -Uri $url -Method Post -Headers $headers -Body $body
 
