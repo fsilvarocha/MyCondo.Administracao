@@ -10,4 +10,8 @@
     <Folder Include="Services\Base\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MyCondo.Administracao.Transfer\MyCondo.Administracao.Transfer.csproj" />
+  </ItemGroup>
+
 </Project>

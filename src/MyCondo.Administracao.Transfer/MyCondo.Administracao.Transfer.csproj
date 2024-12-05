@@ -10,4 +10,13 @@
     <Folder Include="DataTransfer\Base\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyCondo.Administracao.Domain\MyCondo.Administracao.Domain.csproj" />
+    <ProjectReference Include="..\MyCondo.Administracao.Infra\MyCondo.Administracao.Infra.csproj" />
+  </ItemGroup>
+
 </Project>
