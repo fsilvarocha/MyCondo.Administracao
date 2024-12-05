@@ -7,8 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Entities\Base\" />
-    <Folder Include="Interface\Base\" />
     <Folder Include="Utils\Enumeradores\" />
   </ItemGroup>
 
