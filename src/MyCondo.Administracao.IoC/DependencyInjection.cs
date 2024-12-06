@@ -22,10 +22,15 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
+        //services.AddDbContext<MyCondoContext>(options =>
+        //    options.UseSqlite(
+        //        configuration.GetConnectionString("DefaultConnection"),
+        //        b => b.MigrationsAssembly("MyCondo.Administracao.API")));
         services.AddDbContext<MyCondoContext>(options =>
-            options.UseSqlite(
+            options.UseNpgsql(
                 configuration.GetConnectionString("DefaultConnection"),
                 b => b.MigrationsAssembly("MyCondo.Administracao.API")));
+
 
         services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 
