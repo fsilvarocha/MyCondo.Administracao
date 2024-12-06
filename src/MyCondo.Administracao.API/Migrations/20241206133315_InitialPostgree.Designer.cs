@@ -5,26 +5,33 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyCondo.Administracao.Infra.Data;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
 namespace MyCondo.Administracao.API.Migrations
 {
     [DbContext(typeof(MyCondoContext))]
-    [Migration("20241205201900_NomeDaMigration")]
-    partial class NomeDaMigration
+    [Migration("20241206133315_InitialPostgree")]
+    partial class InitialPostgree
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
+            modelBuilder
+                .HasAnnotation("ProductVersion", "9.0.0")
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
+
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("MyCondo.Administracao.Domain.Entities.Condominio.Condominios", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<double>("AreaTotal")
                         .HasColumnType("double(18,5)");
@@ -52,7 +59,7 @@ namespace MyCondo.Administracao.API.Migrations
                     b.Property<DateTime>("DataCriacao")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("Date")
-                        .HasDefaultValue(new DateTime(2024, 12, 5, 17, 19, 0, 122, DateTimeKind.Local).AddTicks(2601));
+                        .HasDefaultValue(new DateTime(2024, 12, 6, 10, 33, 15, 183, DateTimeKind.Local).AddTicks(2666));
 
                     b.Property<string>("Logo")
                         .HasColumnType("varchar(500)");
@@ -68,7 +75,7 @@ namespace MyCondo.Administracao.API.Migrations
                         .HasColumnType("varchar(15)");
 
                     b.Property<Guid>("Tenante")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("uuid");
 
                     b.Property<int>("TipoCondominio")
                         .HasColumnType("int");

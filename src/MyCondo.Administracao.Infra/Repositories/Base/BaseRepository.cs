@@ -50,9 +50,14 @@ public class BaseRepository<T> : IBaseRepository<T> where T : class
 
         try
         {
+            //var retorno = await _dbSet.FirstOrDefaultAsync(x =>
+            //    EF.Property<string>(x, "Tenante").ToLower() == tenante.ToString().ToLower() &&
+            //    EF.Property<int>(x, "Id") == id);
+
             var retorno = await _dbSet.FirstOrDefaultAsync(x =>
-                EF.Property<string>(x, "Tenante").ToLower() == tenante.ToString().ToLower() &&
+                EF.Property<Guid>(x, "Tenante") == Guid.Parse(tenante) &&
                 EF.Property<int>(x, "Id") == id);
+
 
             return retorno;
         }
