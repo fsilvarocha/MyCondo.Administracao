@@ -60,7 +60,8 @@ public static class DependencyInjection
     private static void ConfigurarHealthCheck(IServiceCollection services, IConfiguration configuration)
     {
         services.AddHealthChecks()
-            .AddSqlite(configuration.GetConnectionString("DefaultConnection"), name: "Database");
+            .AddNpgSql(configuration.GetConnectionString("DefaultConnection"), name: "PostgreSQL");
+            //.AddSqlite(configuration.GetConnectionString("DefaultConnection"), name: "Sqlite");
 
         services.AddHealthChecksUI(c =>
         {
