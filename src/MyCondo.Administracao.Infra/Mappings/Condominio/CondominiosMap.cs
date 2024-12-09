@@ -37,7 +37,7 @@ public class CondominiosMap : IEntityTypeConfiguration<Condominios>
             .HasColumnType("varchar(500)");
 
         builder.Property(p => p.AreaTotal)
-            .HasColumnType("double(18,5)");
+            .HasColumnType("decimal(18,5)");
 
         builder.Property(p => p.Cep)
             .IsRequired()
@@ -61,7 +61,7 @@ public class CondominiosMap : IEntityTypeConfiguration<Condominios>
         builder.Property(p => p.Complemento)
             .HasColumnType("varchar(100)");
 
-        //builder.Navigation(p => p.Blocos)
-            //.AutoInclude();
+        builder.Navigation(p => p.Blocos)
+            .AutoInclude();
     }
 }

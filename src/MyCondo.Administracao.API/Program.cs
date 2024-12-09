@@ -32,7 +32,7 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-app.UseCors("AllowLocalhost");
+app.UseCors("AllowAll");
 
 app.UseCustomHealthChecks();
 

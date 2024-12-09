@@ -1,5 +1,6 @@
 ﻿using MyCondo.Administracao.Domain.Utils.Enumeradores;
 using MyCondo.Administracao.Transfer.DataTransfer.Base;
+using MyCondo.Administracao.Transfer.DataTransfer.Bloco.Response;
 
 namespace MyCondo.Administracao.Transfer.DataTransfer.Condominio.Response;
 
@@ -19,6 +20,6 @@ public class CondominiosResponse : BaseResponse
     public virtual string? Numero { get; set; }
     public virtual string? Complemento { get; set; }
 
-   // public virtual ICollection<BlocosResponse> Blocos { get; set; }
+    public virtual ICollection<BlocosResponse> Blocos { get; set; }
 }
 
