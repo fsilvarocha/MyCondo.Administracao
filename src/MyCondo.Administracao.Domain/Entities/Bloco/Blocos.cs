@@ -1,4 +1,5 @@
-﻿using MyCondo.Administracao.Domain.Entities.Base;
+﻿using MyCondo.Administracao.Domain.Entities.Apartamento;
+using MyCondo.Administracao.Domain.Entities.Base;
 using MyCondo.Administracao.Domain.Entities.Condominio;
 using System.Text.Json.Serialization;
 
@@ -12,7 +13,7 @@ public class Blocos : BaseEntity
     [JsonIgnore]
     public Condominios Condominios { get; set; }
 
-    // public ICollection<Apartamentos> Apartamentos { get; set; }
+     public ICollection<Apartamentos> Apartamentos { get; set; }
 
     public void SetNome(string nome) => Nome = nome;
     public void SetQuantidadeAndar(int quantidadeAndar) => QuantidadeAndar = quantidadeAndar;
