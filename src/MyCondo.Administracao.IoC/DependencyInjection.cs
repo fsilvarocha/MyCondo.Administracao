@@ -30,14 +30,14 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        //services.AddDbContext<MyCondoContext>(options =>
-        //    options.UseSqlite(
-        //        configuration.GetConnectionString("DefaultConnection"),
-        //        b => b.MigrationsAssembly("MyCondo.Administracao.API")));
         services.AddDbContext<MyCondoContext>(options =>
-            options.UseSqlServer(
+            options.UseSqlite(
                 configuration.GetConnectionString("DefaultConnection"),
                 b => b.MigrationsAssembly("MyCondo.Administracao.API")));
+        //services.AddDbContext<MyCondoContext>(options =>
+        //    options.UseSqlServer(
+        //        configuration.GetConnectionString("DefaultConnection"),
+        //        b => b.MigrationsAssembly("MyCondo.Administracao.API")));
 
 
         services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
@@ -68,8 +68,8 @@ public static class DependencyInjection
     private static void ConfigurarHealthCheck(IServiceCollection services, IConfiguration configuration)
     {
         services.AddHealthChecks()
-            .AddSqlServer(configuration.GetConnectionString("DefaultConnection"), name: "SqlServer");
-            //.AddSqlite(configuration.GetConnectionString("DefaultConnection"), name: "Sqlite");
+           // .AddSqlServer(configuration.GetConnectionString("DefaultConnection"), name: "SqlServer");
+            .AddSqlite(configuration.GetConnectionString("DefaultConnection"), name: "Sqlite");
 
         services.AddHealthChecksUI(c =>
         {
