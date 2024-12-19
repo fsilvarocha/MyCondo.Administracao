@@ -35,8 +35,8 @@ public class BlocosMap : IEntityTypeConfiguration<Blocos>
             .HasForeignKey(b => b.CondominiosId)
             .OnDelete(DeleteBehavior.Cascade);
 
-        //builder.Navigation(a => a.Apartamentos)
-        //    .AutoInclude();
+        builder.Navigation(a => a.Apartamentos)
+            .AutoInclude();
     }
 }
 
