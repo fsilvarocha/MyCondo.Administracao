@@ -68,6 +68,33 @@ public class BaseRepository<T> : IBaseRepository<T> where T : class
         }
     }
 
+    public async Task<T?> GetByTenanteAsync(T entity)
+    {
+        var tenanteProperty = entity.GetType().GetProperty("Tenante");
+
+        if (tenanteProperty == null || tenanteProperty.GetValue(entity)?.ToString() == "00000000-0000-0000-0000-000000000000")
+            throw new InvalidOperationException("A entidade fornecida não possui as propriedades esperadas: 'Tenante'.");
+
+        string tenante = tenanteProperty.GetValue(entity)?.ToString();
+
+        if (string.IsNullOrEmpty(tenante))
+            return null;
+
+        try
+        {
+            var retorno = await _dbSet.FirstOrDefaultAsync(x =>
+                EF.Property<Guid>(x, "Tenante") == Guid.Parse(tenante));
+
+
+            return retorno;
+        }
+        catch (Exception ex)
+        {
+            // Logar o erro, se necessário
+            throw new InvalidOperationException("Erro ao executar a consulta no banco de dados.", ex);
+        }
+    }
+
     public async Task UpdateAsync(T entity)
     {
         var property = entity.GetType().GetProperty("DataAtualizado");

@@ -1,5 +1,6 @@
 ﻿using MyCondo.Administracao.Domain.Utils.Enumeradores;
 using MyCondo.Administracao.Transfer.DataTransfer.Base;
+using MyCondo.Administracao.Transfer.DataTransfer.Morador.Response;
 
 namespace MyCondo.Administracao.Transfer.DataTransfer.Apartamento.Response;
 
@@ -10,5 +11,5 @@ public class ApartamentosResponse : BaseResponse
     public ETipoApartamento TipoApartamento { get; set; }
     public string TipoApartamentoDescricao { get; set; }
 
-   // public ICollection<MoradoresResponse> Moradores { get; set; }
+    public ICollection<MoradoresResponse> Moradores { get; set; }
 }

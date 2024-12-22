@@ -8,6 +8,7 @@ public interface IBaseService<TPesquisa, TInserir, TAtualizar, TDeletar, TRespon
     where TResponse : class
 {
     Task<TResponse?> GetByIdTenanteAsync(TPesquisa entity);
+    Task<TResponse?> GetByTenanteAsync(TPesquisa entity);
     Task<IEnumerable<TResponse>> GetAllAsync();
     Task<TResponse> AddAsync(TInserir entity);
     Task UpdateAsync(int id, Guid tenante, TAtualizar entity);

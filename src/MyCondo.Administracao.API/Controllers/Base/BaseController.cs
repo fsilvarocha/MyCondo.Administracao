@@ -54,15 +54,59 @@ public abstract class BaseController<TPesquisa, TInserir, TAtualizar, TDeletar, 
     /// <param name="id"></param>
     /// <param name="tenante"></param>
     /// <returns></returns>
-    [HttpGet("buscar-id")]
+    [HttpGet("buscar-id-tenante")]
     public virtual async Task<ActionResult<TResponse>> GetById(int id, Guid tenante)
     {
-        TPesquisa pesquisaRequest = Activator.CreateInstance<TPesquisa>(); // Instancia uma pesquisa padrão (ajustar conforme sua necessidade)
-                                                                           // Defina os parâmetros de pesquisa, por exemplo:
-                                                                           // pesquisaRequest.Id = id;
-                                                                           // pesquisaRequest.Tenante = tenante;
+        TPesquisa pesquisaRequest = Activator.CreateInstance<TPesquisa>();
+
+        var idProperty = typeof(TPesquisa).GetProperty("Id");
+        if (idProperty != null && idProperty.CanWrite)
+        {
+            idProperty.SetValue(pesquisaRequest, id);
+        }
+        else
+        {
+            throw new InvalidOperationException($"A classe {typeof(TPesquisa).Name} não possui uma propriedade 'Id' ou ela não é configurável.");
+        }
+
+        var property = typeof(TPesquisa).GetProperty("Tenante");
+        if (property != null && property.CanWrite)
+        {
+            property.SetValue(pesquisaRequest, tenante);
+        }
+        else
+        {
+            throw new InvalidOperationException($"A classe {typeof(TPesquisa).Name} não possui uma propriedade 'Tenante' ou ela não é configurável.");
+        }
 
         var entity = await _service.GetByIdTenanteAsync(pesquisaRequest);
+        if (entity == null)
+            return NotFound();
+
+        return Ok(entity);
+    }
+
+    /// <summary>
+    /// Buscar por tenante
+    /// </summary>
+    /// <param name="tenante"></param>
+    /// <returns></returns>
+    [HttpGet("buscar-tenante")]
+    public virtual async Task<ActionResult<TResponse>> GetByTenante(Guid tenante)
+    {
+        TPesquisa pesquisaRequest = Activator.CreateInstance<TPesquisa>();
+
+        var property = typeof(TPesquisa).GetProperty("Tenante");
+        if (property != null && property.CanWrite)
+        {
+            property.SetValue(pesquisaRequest, tenante);
+        }
+        else
+        {
+            throw new InvalidOperationException($"A classe {typeof(TPesquisa).Name} não possui uma propriedade 'Tenante' ou ela não é configurável.");
+        }
+
+        var entity = await _service.GetByTenanteAsync(pesquisaRequest);
         if (entity == null)
             return NotFound();
 

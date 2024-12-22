@@ -10,18 +10,23 @@ using MyCondo.Administracao.Application.Services.BlocoService;
 using MyCondo.Administracao.Application.Services.BlocoService.Interface;
 using MyCondo.Administracao.Application.Services.CondominioService;
 using MyCondo.Administracao.Application.Services.CondominioService.Interface;
+using MyCondo.Administracao.Application.Services.MoradorService;
+using MyCondo.Administracao.Application.Services.MoradorService.Interface;
 using MyCondo.Administracao.Domain.Interface.Apartamento;
 using MyCondo.Administracao.Domain.Interface.Base;
 using MyCondo.Administracao.Domain.Interface.Bloco;
 using MyCondo.Administracao.Domain.Interface.Condominio;
+using MyCondo.Administracao.Domain.Interface.Morador;
 using MyCondo.Administracao.Infra.Data;
 using MyCondo.Administracao.Infra.Mappings.Apartamento.Validator;
 using MyCondo.Administracao.Infra.Mappings.Bloco.Validator;
 using MyCondo.Administracao.Infra.Mappings.Condominio.Validator;
+using MyCondo.Administracao.Infra.Mappings.Morador.Validator;
 using MyCondo.Administracao.Infra.Repositories.Apartamento;
 using MyCondo.Administracao.Infra.Repositories.Base;
 using MyCondo.Administracao.Infra.Repositories.Bloco;
 using MyCondo.Administracao.Infra.Repositories.Condominio;
+using MyCondo.Administracao.Infra.Repositories.Morador;
 using MyCondo.Administracao.Transfer.DataTransfer.Apartamento.Profiles;
 using MyCondo.Administracao.Transfer.DataTransfer.Apartamento.Request;
 using MyCondo.Administracao.Transfer.DataTransfer.Apartamento.Response;
@@ -31,6 +36,9 @@ using MyCondo.Administracao.Transfer.DataTransfer.Bloco.Response;
 using MyCondo.Administracao.Transfer.DataTransfer.Condominio.Profiles;
 using MyCondo.Administracao.Transfer.DataTransfer.Condominio.Request;
 using MyCondo.Administracao.Transfer.DataTransfer.Condominio.Response;
+using MyCondo.Administracao.Transfer.DataTransfer.Morador.Profiles;
+using MyCondo.Administracao.Transfer.DataTransfer.Morador.Request;
+using MyCondo.Administracao.Transfer.DataTransfer.Morador.Response;
 
 namespace MyCondo.Administracao.IoC;
 
@@ -92,7 +100,7 @@ public static class DependencyInjection
         services.AddAutoMapper(typeof(CondominiosProfile));
         services.AddAutoMapper(typeof(BlocosProfile));
         services.AddAutoMapper(typeof(ApartamentoProfile));
-        //services.AddAutoMapper(typeof(MoradoresProfile));
+        services.AddAutoMapper(typeof(MoradoresProfile));
     }
 
     private static void ConfiguraServices(IServiceCollection services)
@@ -101,12 +109,12 @@ public static class DependencyInjection
         services.AddScoped<ICondominiosService, CondominiosService>();
         services.AddScoped<IBlocosService, BlocosService>();
         services.AddScoped<IApartamentosService, ApartamentosService>();
-        //services.AddScoped<IMoradoresService, MoradoresService>();
+        services.AddScoped<IMoradoresService, MoradoresService>();
     }
 
     private static void ConfigureBaseService(IServiceCollection services)
     {
-        //services.AddScoped<IBaseService<MoradoresPesquisaRequest, MoradoresInserirRequest, MoradoresAtualizarRequest, MoradoresExcluirRequest, MoradoresResponse>, MoradoresService>();
+        services.AddScoped<IBaseService<MoradoresPesquisaRequest, MoradoresInserirRequest, MoradoresAtualizarRequest, MoradoresExcluirRequest, MoradoresResponse>, MoradoresService>();
         services.AddScoped<IBaseService<BlocosPesquisaRequest, BlocosInserirRequest, BlocosAtualizarRequest, BlocosExcluirRequest, BlocosResponse>, BlocosService>();
         services.AddScoped<IBaseService<ApartamentosPesquisaRequest, ApartamentosInserirRequest, ApartamentosAtualizarRequest, ApartamentosExcluirRequest, ApartamentosResponse>, ApartamentosService>();
         services.AddScoped<IBaseService<CondominiosPesquisaRequest, CondominiosInserirRequest, CondominiosAtualizarRequest, CondominiosExcluirRequest, CondominiosResponse>, CondominiosService>();
@@ -117,7 +125,7 @@ public static class DependencyInjection
         services.AddScoped<ICondominiosRepository, CondominiosRepository>();
         services.AddScoped<IBlocosRepository, BlocoRepository>();
         services.AddScoped<IApartamentosRepository, ApartamentosRepository>();
-        //services.AddScoped<IMoradoresRepository, MoradoresRepository>();
+        services.AddScoped<IMoradoresRepository, MoradoresRepository>();
     }
 
     private static void ConfiguraFLuentValidation(IServiceCollection services)
@@ -126,7 +134,7 @@ public static class DependencyInjection
         services.AddValidatorsFromAssemblyContaining<CondominiosValidator>();
         services.AddValidatorsFromAssemblyContaining<BlocosValidator>();
         services.AddValidatorsFromAssemblyContaining<ApartamentosValidator>();
-        //services.AddValidatorsFromAssemblyContaining<MoradoresValidator>();
+        services.AddValidatorsFromAssemblyContaining<MoradoresValidator>();
     }
 }
 
