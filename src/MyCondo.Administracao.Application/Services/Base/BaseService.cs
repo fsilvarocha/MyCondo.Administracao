@@ -78,5 +78,12 @@ public abstract class BaseService<TEntity, TPesquisa, TInserir, TAtualizar, TDel
             Tenante = tenante,
         };
     }
+
+    public async Task<TResponse?> GetByTenanteAsync(TPesquisa entity)
+    {
+        TEntity pesquisa = _mapper.Map<TEntity>(entity);
+        var result = await _repository.GetByTenanteAsync(pesquisa);
+        return _mapper.Map<TResponse>(result);
+    }
 }
 

@@ -1,5 +1,6 @@
 ﻿using MyCondo.Administracao.Domain.Entities.Base;
 using MyCondo.Administracao.Domain.Entities.Bloco;
+using MyCondo.Administracao.Domain.Entities.Morador;
 using MyCondo.Administracao.Domain.Utils.Enumeradores;
 using System.Text.Json.Serialization;
 
@@ -14,7 +15,7 @@ public class Apartamentos : BaseEntity
     [JsonIgnore]
     public Blocos Blocos { get; set; }
 
-    //public ICollection<Moradores> Moradores { get; set; }
+    public ICollection<Moradores> Moradores { get; set; }
 
     public Apartamentos()
     {
