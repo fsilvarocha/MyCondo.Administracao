@@ -1,4 +1,5 @@
-﻿using MyCondo.Administracao.Domain.Entities.Base;
+﻿using MyCondo.Administracao.Domain.Entities.AreaComun;
+using MyCondo.Administracao.Domain.Entities.Base;
 using MyCondo.Administracao.Domain.Entities.Bloco;
 using MyCondo.Administracao.Domain.Utils.Enumeradores;
 using System.ComponentModel;
@@ -22,6 +23,7 @@ public class Condominios : BaseEntity
     public virtual string? Numero { get; protected set; }
     public virtual string? Complemento { get; protected set; }
     public virtual ICollection<Blocos> Blocos { get; protected set; }
+    public virtual ICollection<AreaComuns> AreaComuns { get; protected set; }
 
     public Condominios()
     {

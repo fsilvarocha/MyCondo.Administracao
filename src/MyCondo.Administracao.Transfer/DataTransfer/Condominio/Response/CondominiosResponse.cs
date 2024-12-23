@@ -1,4 +1,6 @@
-﻿using MyCondo.Administracao.Domain.Utils.Enumeradores;
+﻿using MyCondo.Administracao.Domain.Entities.AreaComun;
+using MyCondo.Administracao.Domain.Utils.Enumeradores;
+using MyCondo.Administracao.Transfer.DataTransfer.AreaComun.Response;
 using MyCondo.Administracao.Transfer.DataTransfer.Base;
 using MyCondo.Administracao.Transfer.DataTransfer.Bloco.Response;
 
@@ -21,5 +23,6 @@ public class CondominiosResponse : BaseResponse
     public virtual string? Complemento { get; set; }
 
     public virtual ICollection<BlocosResponse> Blocos { get; set; }
+    public virtual ICollection<AreaComunsResponse> AreaComuns { get; set; }
 }
 
