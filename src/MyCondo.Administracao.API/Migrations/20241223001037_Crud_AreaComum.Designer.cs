@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyCondo.Administracao.Infra.Data;
 
@@ -10,9 +11,11 @@ using MyCondo.Administracao.Infra.Data;
 namespace MyCondo.Administracao.API.Migrations
 {
     [DbContext(typeof(MyCondoContext))]
-    partial class MyCondoContextModelSnapshot : ModelSnapshot
+    [Migration("20241223001037_Crud_AreaComum")]
+    partial class Crud_AreaComum
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
