@@ -7,14 +7,14 @@ namespace MyCondo.Administracao.Domain.Entities.Morador;
 
 public class Moradores : BaseEntity
 {
-    public string Nome { get; protected set; }
-    public string? Cpf { get; protected set; }
-    public ETipoMorador TipoMorador { get; protected set; }
-    public int ApartamentoId { get; protected set; }
-    public string Foto { get; protected set; }
+    public virtual string Nome { get; protected set; }
+    public virtual string? Cpf { get; protected set; }
+    public virtual ETipoMorador TipoMorador { get; protected set; }
+    public virtual int ApartamentoId { get; protected set; }
+    public virtual string Foto { get; protected set; }
 
     [JsonIgnore]
-    public Apartamentos Apartamentos { get; set; }
+    public Apartamentos Apartamentos { get; protected set; }
 
     public Moradores()
     {
