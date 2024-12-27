@@ -16,6 +16,7 @@ public class ApartamentoProfile : Profile
         CreateMap<Apartamentos, ApartamentosPesquisaRequest>().ReverseMap();
         CreateMap<Apartamentos, ApartamentosResponse>()
             .ForMember(dest => dest.TipoApartamentoDescricao, opt => opt.MapFrom(src => src.TipoApartamento.ObterDescriaoEnum()))
+            .ForMember(dest => dest.PossuiVagasDemarcadaDescricao, opt => opt.MapFrom(src => src.PossuiVagasDemarcada.ObterDescriaoEnum()))
             .ReverseMap();
     }
 }

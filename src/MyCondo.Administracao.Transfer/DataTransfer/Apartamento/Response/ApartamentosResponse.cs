@@ -10,6 +10,8 @@ public class ApartamentosResponse : BaseResponse
     public int Andar { get; set; }
     public ETipoApartamento TipoApartamento { get; set; }
     public string TipoApartamentoDescricao { get; set; }
+    public ESimNao PossuiVagasDemarcada { get; set; }
+    public string PossuiVagasDemarcadaDescricao { get; set; }
 
     public ICollection<MoradoresResponse> Moradores { get; set; }
 }
