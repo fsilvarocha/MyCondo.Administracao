@@ -1,6 +1,7 @@
 ﻿using MyCondo.Administracao.Domain.Utils.Enumeradores;
 using MyCondo.Administracao.Transfer.DataTransfer.Base;
 using MyCondo.Administracao.Transfer.DataTransfer.Morador.Response;
+using MyCondo.Administracao.Transfer.DataTransfer.VagaGaragem.Response;
 
 namespace MyCondo.Administracao.Transfer.DataTransfer.Apartamento.Response;
 
@@ -14,4 +15,5 @@ public class ApartamentosResponse : BaseResponse
     public string PossuiVagasDemarcadaDescricao { get; set; }
 
     public ICollection<MoradoresResponse> Moradores { get; set; }
+    public ICollection<VagasGaragemResponse> VagasGaragem { get; set; }
 }

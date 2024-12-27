@@ -14,24 +14,29 @@ using MyCondo.Administracao.Application.Services.CondominioService;
 using MyCondo.Administracao.Application.Services.CondominioService.Interface;
 using MyCondo.Administracao.Application.Services.MoradorService;
 using MyCondo.Administracao.Application.Services.MoradorService.Interface;
+using MyCondo.Administracao.Application.Services.VagaGaragem;
+using MyCondo.Administracao.Application.Services.VagaGaragem.Interface;
 using MyCondo.Administracao.Domain.Interface.Apartamento;
 using MyCondo.Administracao.Domain.Interface.AreaComun;
 using MyCondo.Administracao.Domain.Interface.Base;
 using MyCondo.Administracao.Domain.Interface.Bloco;
 using MyCondo.Administracao.Domain.Interface.Condominio;
 using MyCondo.Administracao.Domain.Interface.Morador;
+using MyCondo.Administracao.Domain.Interface.VagaGaragem;
 using MyCondo.Administracao.Infra.Data;
 using MyCondo.Administracao.Infra.Mappings.Apartamento.Validator;
 using MyCondo.Administracao.Infra.Mappings.AreaComun.Validator;
 using MyCondo.Administracao.Infra.Mappings.Bloco.Validator;
 using MyCondo.Administracao.Infra.Mappings.Condominio.Validator;
 using MyCondo.Administracao.Infra.Mappings.Morador.Validator;
+using MyCondo.Administracao.Infra.Mappings.VagaGaragem.Validator;
 using MyCondo.Administracao.Infra.Repositories.Apartamento;
 using MyCondo.Administracao.Infra.Repositories.AreaComun;
 using MyCondo.Administracao.Infra.Repositories.Base;
 using MyCondo.Administracao.Infra.Repositories.Bloco;
 using MyCondo.Administracao.Infra.Repositories.Condominio;
 using MyCondo.Administracao.Infra.Repositories.Morador;
+using MyCondo.Administracao.Infra.Repositories.VagaGaragem;
 using MyCondo.Administracao.Transfer.DataTransfer.Apartamento.Profiles;
 using MyCondo.Administracao.Transfer.DataTransfer.Apartamento.Request;
 using MyCondo.Administracao.Transfer.DataTransfer.Apartamento.Response;
@@ -46,6 +51,9 @@ using MyCondo.Administracao.Transfer.DataTransfer.Condominio.Response;
 using MyCondo.Administracao.Transfer.DataTransfer.Morador.Profiles;
 using MyCondo.Administracao.Transfer.DataTransfer.Morador.Request;
 using MyCondo.Administracao.Transfer.DataTransfer.Morador.Response;
+using MyCondo.Administracao.Transfer.DataTransfer.VagaGaragem.Profiles;
+using MyCondo.Administracao.Transfer.DataTransfer.VagaGaragem.Request;
+using MyCondo.Administracao.Transfer.DataTransfer.VagaGaragem.Response;
 
 namespace MyCondo.Administracao.IoC;
 
@@ -108,6 +116,7 @@ public static class DependencyInjection
         services.AddAutoMapper(typeof(BlocosProfile));
         services.AddAutoMapper(typeof(ApartamentoProfile));
         services.AddAutoMapper(typeof(MoradoresProfile));
+        services.AddAutoMapper(typeof(VagasGaragemProfile));
     }
 
     private static void ConfiguraServices(IServiceCollection services)
@@ -118,6 +127,7 @@ public static class DependencyInjection
         services.AddScoped<IApartamentosService, ApartamentosService>();
         services.AddScoped<IMoradoresService, MoradoresService>();
         services.AddScoped<IAreaComunsService, AreaComunsService>();
+        services.AddScoped<IVagasGaragemService, VagasGaragemService>();
     }
 
     private static void ConfigureBaseService(IServiceCollection services)
@@ -127,6 +137,7 @@ public static class DependencyInjection
         services.AddScoped<IBaseService<ApartamentosPesquisaRequest, ApartamentosInserirRequest, ApartamentosAtualizarRequest, ApartamentosExcluirRequest, ApartamentosResponse>, ApartamentosService>();
         services.AddScoped<IBaseService<CondominiosPesquisaRequest, CondominiosInserirRequest, CondominiosAtualizarRequest, CondominiosExcluirRequest, CondominiosResponse>, CondominiosService>();
         services.AddScoped<IBaseService<AreaComunsPesquisaRequest, AreaComunsInserirRequest, AreaComunsAtualizarRequest, AreaComunsExcluirRequest, AreaComunsResponse>, AreaComunsService>();
+        services.AddScoped<IBaseService<VagasGaragemPesquisaRequest, VagasGaragemInserirRequest, VagasGaragemAtualizarRequest, VagasGaragemExcluirRequest, VagasGaragemResponse>, VagasGaragemService>();
     }
 
     private static void ConfiguraRepositories(IServiceCollection services)
@@ -136,6 +147,7 @@ public static class DependencyInjection
         services.AddScoped<IApartamentosRepository, ApartamentosRepository>();
         services.AddScoped<IMoradoresRepository, MoradoresRepository>();
         services.AddScoped<IAreaComunsRepository, AreaComunsRepository>();
+        services.AddScoped<IVagasGaragemRepository, VagasGaragemRepository>();
     }
 
     private static void ConfiguraFLuentValidation(IServiceCollection services)
@@ -146,6 +158,7 @@ public static class DependencyInjection
         services.AddValidatorsFromAssemblyContaining<ApartamentosValidator>();
         services.AddValidatorsFromAssemblyContaining<MoradoresValidator>();
         services.AddValidatorsFromAssemblyContaining<AreaComunsValidator>();
+        services.AddValidatorsFromAssemblyContaining<VagasGaragemValidator>();
     }
 }
 
