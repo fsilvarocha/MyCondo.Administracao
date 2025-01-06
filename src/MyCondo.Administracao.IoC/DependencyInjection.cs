@@ -100,7 +100,8 @@ public static class DependencyInjection
     {
         services.AddHealthChecks()
            // .AddSqlServer(configuration.GetConnectionString("DefaultConnection"), name: "SqlServer");
-            .AddSqlite(configuration.GetConnectionString("DefaultConnection"), name: "Sqlite");
+            .AddSqlite(configuration.GetConnectionString("DefaultConnection"), name: "Sqlite")
+            .AddRedis(configuration.GetConnectionString("RedisConnection"), name: "Redis", tags: ["cache", "redis"]);
 
         services.AddHealthChecksUI(c =>
         {
