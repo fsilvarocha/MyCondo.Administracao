@@ -1,7 +1,5 @@
 # MyCondo.Administracao
 
-# AB inbev Developer Evaluation | K2
-
 ## 📌 Visão Geral
 Projeto para controle e administração de condomínios, utilizando **.NET 8**, **SqlServer**, **Redis**.
 
