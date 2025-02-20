@@ -14,7 +14,7 @@ Projeto para controle e administração de condomínios, utilizando **.NET 8**, 
 API estará rodando em:
 🔗 **http://localhost:5119/swagger**
 
-## Padroes de Desenvolvimento Utilizado
+## 🚀 Padroes de Desenvolvimento Utilizado
 - **DDD Clean Arquitecture
 - **SOLID
 - **Clean Code
